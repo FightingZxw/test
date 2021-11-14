@@ -1,0 +1,516 @@
+Table of Contents                                    目录
+1 Blackfly S Technical Reference 1          黑蝇技术参考1
+2 BFS-U3-51S5 Specifications 2             规格  
+2.1 General 2
+2.2 BFS-U3-51S5P Supported Pixel Formats 3  支持的像素格式  
+2.3 BFS-U3-51S5P Frame Rates 3                      帧速率  
+3 Acquisition Control 5                                      采集控制
+3.1 Acquisition and Frame Rate 5                      采集和帧速率
+3.2 Exposure Time Modes 5                               曝光时间模式
+3.2.1 Trigger Features 5                                     触发特性
+3.3 Summary Table 6                                         
+3.4 Acquisition Control Features 8                     采集控制特征
+3.4.1 Acquisition Mode 8                                   采集模式
+3.4.2 Acquisition Start 9                                      开始采集
+3.4.3 Acquisition Stop 9                                       停止采集
+3.4.4 Acquisition Frame Count 9                          采集帧数  
+3.4.5 Acquisition Burst Frame Count 10               采集突发帧数
+3.4.6 Exposure Mode 10                                        曝光模式
+3.4.7 Exposure Time 10                                          曝光时间                              
+3.4.8 Exposure Auto 11                                         自动曝光
+3.4.9 Acquisition Frame Rate 11                             采集帧率             
+3.4.10 Resulting Frame Rate 11                              采集结果帧率
+3.4.11 Acquisition Frame Rate Enable 12                自动获取帧率
+3.4.12 Acquisition Line Rate 12                                 采集线速率  
+3.4.13 Trigger Selector 12                                       触发器选择器  
+3.4.14 Trigger Mode 13                                          触发模式  
+3.4.15 Trigger Software 13                                     触发软件  
+3.4.16 Trigger Source 14                                        触发源  
+3.4.17 Trigger Activation 14                                   触发激活  
+3.4.18 Trigger Overlap 15
+3.4.19 Trigger Delay 15                                           触发延迟  
+3.4.20 Sensor Shutter Mode 16                               传感器快门模式  
+4 Analog Control 17                                                 模拟控制
+
+
+4.1 Gain 17                                                  获取
+4.2 Black Level 17                                        黑色程度
+4.3 White Balance - Color Models 17          白平衡-颜色模型
+4.4 Gamma 18
+4.5 Sharpening - Color Models 18              锐化-颜色模型
+4.6 Summary Table 19                                  
+4.7 Analog Control Features 20                   模拟控制特性
+4.7.1 Gain Selector 20                                  增益选择器
+4.7.2 Gain 21                                                获取
+4.7.3 Gain Auto 21                                       自动获取
+4.7.4 Black Level Selector 21                        黑色程度选择
+4.7.5 Black Level Raw 22                              黑色程度未加工
+4.7.6 Black Level 22                                       黑色程度
+4.7.7 Black Level Clamping Enable 23            黑色电平卡紧使能
+4.7.8 Balance Ratio Selector 23                      平衡比选择器                  
+4.7.9 Balance Ratio 23                                     平衡比
+4.7.10 Balance White Auto 24                         自动白平衡
+4.7.11 Gamma 24
+4.7.12 Gamma Enable 24
+4.7.13 Sharpening Enable 25
+4.7.14 Sharpening Auto 25
+4.7.15 Sharpening 25
+4.7.16 Sharpening Threshold 26
+5 Image Format Control 27
+5.1 Binning/Decimation 27
+5.1.1 Binning/Decimation Feature Dependency 28
+5.2 Pixel Format 28
+5.2.1 Single Channel 8-bit and 16-bit Formats 28
+5.2.2 Single Channel 10-bit Formats 29
+5.2.3 Single Channel 12-bit Formats 30
+5.2.4 Multi-Channel Formats - Color Models 31
+5.2.4.1 YCbCr8 / YUV444Packed 31
+5.2.4.2 YCbCr422_8 / YUV422Packed 31
+5.2.4.3 YCbCr411_8 / YUV411Packed 32
+5.3 ADC Bit Depth 33
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 ii
+5.4 Test Pattern 33
+5.5 Region Of Interest 34
+5.6 Reverse X 34
+5.7 Reverse Y 34
+5.8 Summary Table 34
+5.9 Image Format Control Features 38
+5.9.1 Sensor Width 38
+5.9.2 Sensor Height 38
+5.9.3 Width Max 39
+5.9.4 Height Max 39
+5.9.5 Multiple ROI Feature Enable 39
+5.9.6 ROI Selector 40
+5.9.7 ROI Enable 40
+5.9.8 ROI Width 40
+5.9.9 ROI Height 41
+5.9.10 ROI OffsetX 41
+5.9.11 ROI OffsetY 41
+5.9.12 Resulting ROI Numbers 42
+5.9.13 Multiple ROI Configuration Valid 42
+5.9.14 Width 42
+5.9.15 Height 43
+5.9.16 Offset X 43
+5.9.17 Offset Y 43
+5.9.18 Pixel Format 44
+5.9.19 Pixel Size 46
+5.9.20 Pixel Color Filter 47
+5.9.21 Pixel Dynamic Range Min 47
+5.9.22 Pixel Dynamic Range Max 48
+5.9.23 ISP Enable 48
+5.9.24 Binning Selector 48
+5.9.25 Binning Horizontal Mode 49
+5.9.26 Binning Vertical Mode 49
+5.9.27 Binning Horizontal 50
+5.9.28 Binning Vertical 50
+5.9.29 Decimation Selector 50
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 iii
+5.9.30 Decimation Horizontal Mode 51
+5.9.31 Decimation Vertical Mode 51
+5.9.32 Decimation Horizontal 52
+5.9.33 Decimation Vertical 52
+5.9.34 Reverse X 52
+5.9.35 Reverse Y 53
+5.9.36 Test Pattern Generator Selector 53
+5.9.37 Test Pattern 53
+5.9.38 ADC Bit Depth 54
+6 Device Control 55
+6.1 General Information 55
+6.2 Bandwidth 55
+6.3 Timestamp 55
+6.4 Power Supply 55
+6.5 Device Reset 55
+6.6 Summary Table 55
+6.7 Device Control Features 58
+6.7.1 Device Scan Type 58
+6.7.2 Device Sensor Chroma 58
+6.7.3 Device Vendor Name 58
+6.7.4 Device Model Name 59
+6.7.5 Sensor Description 59
+6.7.6 Device Firmware Version 59
+6.7.7 Device Serial Number 60
+6.7.8 Device User ID 60
+6.7.9 Device TL Type 60
+6.7.10 Device Gen CP Version Major 61
+6.7.11 Device Gen CP Version Minor 61
+6.7.12 Device Max Throughput 61
+6.7.13 Device Link Speed 62
+6.7.14 Device Link Throughput Limit 62
+6.7.15 Device Link Bandwidth Reserve 62
+6.7.16 Device Link Current Throughput 63
+6.7.17 Device Reset 63
+6.7.18 Device Indicator Mode 63
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 iv
+6.7.19 Device Temperature Selector 64
+6.7.20 Device Temperature 64
+6.7.21 Timestamp Latch 64
+6.7.22 Timestamp Latch Value 65
+6.7.23 Timestamp Increment 65
+6.7.24 Device Power Supply Selector 65
+6.7.25 Power Supply Voltage 66
+6.7.26 Power Supply Current 66
+6.7.27 Device Uptime 66
+6.7.28 Link Uptime 67
+6.7.29 Enumeration Count 67
+6.7.30 Factory Reset 67
+6.7.31 Max Device Reset Time 68
+7 Transport Layer Control 69
+7.1 Summary Table 69
+7.2 Transport Layer Control Features 69
+7.2.1 Payload Size 69
+7.2.2 USB3 Vision 70
+7.2.3 Link Error Count 70
+7.2.4 Link Recovery Count 70
+7.3 USB3 Vision 71
+7.3.1 Summary Table 71
+7.3.2 USB3 Vision Features 72
+7.3.2.1 Message Channel 72
+7.3.2.2 U3V Version Major 72
+7.3.2.3 U3V Version Minor 72
+7.3.2.4 U3V Capability 72
+7.3.2.5 U3V SIRM Available 73
+7.3.2.6 U3V EIRM Available 73
+7.3.2.7 U3V IIDC2 Available 73
+7.3.2.8 Max Command Transfer Length 74
+7.3.2.9 Max Ack Transfer Length 74
+7.3.2.10 Number of Stream Channels 74
+7.3.2.11 Current Speed 75
+8 Sequencer Control 76
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 v
+8.1 Sequenced Feature Settings 76
+8.1.1 Sequencer Configuration 77
+8.1.2 Sequencer Execution 78
+8.1.3 Sequencer Usage Example - Simple features change while acquiring images 79
+8.2 Summary Table 80
+8.3 Sequencer Control Features 81
+8.3.1 Sequencer Mode 81
+8.3.2 Sequencer Configuration Mode 82
+8.3.3 Sequencer Configuration Valid 82
+8.3.4 Sequencer Configuration Reset 83
+8.3.5 Sequencer Feature Selector 83
+8.3.6 Sequencer Feature Enable 83
+8.3.7 Sequencer Set Start 84
+8.3.8 Sequencer Set Active 84
+8.3.9 Sequencer Set Selector 84
+8.3.10 Sequencer Set Valid 85
+8.3.11 Sequencer Set Save 85
+8.3.12 Sequencer Set Load 85
+8.3.13 Sequencer Path Selector 86
+8.3.14 Sequencer Trigger Source 86
+8.3.15 Sequencer Trigger Activation 86
+8.3.16 Sequencer Set Next 87
+9 Color Transformation Control 88
+9.1 Summary Table 88
+9.2 Color Transformation Control Features 89
+9.2.1 Color Transformation Selector 89
+9.2.2 Color Transformation Enable 90
+9.2.3 Color Transformation Value Selector 90
+9.2.4 Color Transformation Value 91
+9.2.5 RGB Transform Light Source 91
+9.2.6 Saturation Enable 92
+9.2.7 Saturation 92
+10 Auto Algorithm Control 94
+10.1 Auto Exposure (AE) 94
+10.1.1 Auto Exposure Features 94
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 vi
+10.1.1.1 Backlight Compensation 95
+10.1.1.2 Excessive Frontlight Compensation 95
+10.1.1.3 Normal Lighting 95
+10.1.1.4 Average Metering 95
+10.1.1.5 Spot Metering 95
+10.1.1.6 Partial Metering 95
+10.2 Auto White Balance - Color Models 96
+10.3 Summary Table 96
+10.4 Auto Algorithm Control Features 99
+10.4.1 ROI Selector 99
+10.4.2 ROI Enable 100
+10.4.3 ROI Offset X 100
+10.4.4 ROI Offset Y 100
+10.4.5 ROI Width 101
+10.4.6 ROI Height 101
+10.4.7 White Balance Auto Profile 101
+10.4.8 White Balance Auto Lower Limit 102
+10.4.9 White Balance Auto Upper Limit 102
+10.4.10 White Balance Auto Damping 102
+10.4.11 Target Grey Value Auto 103
+10.4.12 Target Grey Value 103
+10.4.13 Lighting Mode 103
+10.4.14 Metering Mode 104
+10.4.15 Exposure Time Lower Limit 105
+10.4.16 Exposure Time Upper Limit 105
+10.4.17 Gain Lower Limit 105
+10.4.18 Gain Upper Limit 106
+10.4.19 Target Grey Value Lower Limit 106
+10.4.20 Target Grey Value Upper Limit 106
+10.4.21 EV Compensation 107
+10.4.22 Auto Exposure Damping 107
+10.4.23 Auto Exposure Control Priority 107
+11 Flat Field Correction Control 109
+11.0.1 Flat Field Correction Control 109
+11.0.1.1 Factory mode 109
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 vii
+11.0.1.2 User mode 109
+11.0.1.3 Calibration mode 109
+11.0.2 Flat Field User Table Control 110
+11.1 Summary Table 110
+11.2 Flat Field Correction Control Features 110
+11.2.1 Flat Field Correction Enable 110
+11.2.2 Flat Field Correction Mode 111
+11.2.3 Flat Field User Table Control 111
+11.3 Flat Field User Table Control 112
+11.3.1 Summary Table 112
+11.3.2 Flat Field User Table Control Features 112
+11.3.2.1 Table X Coordinate 112
+11.3.2.2 Flat Field Gain 113
+11.3.2.3 Flat Field Offset (16-bit) 113
+11.3.2.4 User Table Reset 113
+11.3.2.5 User Table Save 113
+12 Defective Pixel Correction 115
+12.1 Modifying the List of Defective Pixels 115
+12.1.1 Example: Adding a location to the Defective Pixel Table 115
+12.2 Summary Table 116
+12.3 Defective Pixel Correction Features 117
+12.3.1 Defect Correct Static Enable 117
+12.3.2 Defect Correction Mode 117
+12.3.3 Defect Table Pixel Count 118
+12.3.4 Defect Table Index 118
+12.3.5 Defect X Coordinate 118
+12.3.6 Defect Y Coordinate 119
+12.3.7 Defect Table Apply 119
+12.3.8 Defect Table Save 119
+12.3.9 Defect Table Factory Restore 120
+13 User Set Control 121
+13.1 Types of User Sets 121
+13.2 Start-up User Set 121
+13.3 User Set Managed Features 121
+13.4 User Set Conversion 121
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 viii
+13.5 Summary Table 122
+13.6 User Set Control Features 122
+13.6.1 User Set Selector 122
+13.6.2 User Set Load 123
+13.6.3 User Set Save 123
+13.6.4 User Set Default 123
+13.6.5 User Set Feature Selector 124
+13.6.6 User Set Feature Enable 132
+14 Chunk Data Control 133
+14.1 Summary Table 133
+14.2 Chunk Data Control Features 135
+14.2.1 Chunk Mode Active 135
+14.2.2 Chunk Selector 135
+14.2.3 Chunk Enable 136
+14.2.4 Chunk Image 136
+14.2.5 Image CRC 136
+14.2.6 Chunk Frame ID 137
+14.2.7 Chunk Offset X 137
+14.2.8 Chunk Offset Y 137
+14.2.9 Chunk Width 138
+14.2.10 Chunk Height 138
+14.2.11 Chunk Pixel Format 138
+14.2.12 Chunk Exposure Time 139
+14.2.13 Chunk Gain Selector 139
+14.2.14 Chunk Gain 140
+14.2.15 Chunk Black Level Selector 140
+14.2.16 Chunk Black Level 141
+14.2.17 Chunk Timestamp 141
+14.2.18 Chunk Sequencer Set Active 141
+14.2.19 Chunk Exposure End Line Status All 142
+14.2.20 Chunk Serial Data Length 142
+14.2.21 Chunk Serial Data 142
+14.2.22 Chunk Serial Receive Overflow 142
+15 LUT Control 144
+15.1 Summary Table 144
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 ix
+15.2 LUT Control Features 145
+15.2.1 LUT Selector 145
+15.2.2 LUT Enable 145
+15.2.3 LUT Index 146
+15.2.4 LUT Value 146
+15.2.5 LUT Value All 146
+16 Event Control 147
+16.0.1 Event Features 147
+16.1 Summary Table 147
+16.2 Event Control Features 147
+16.2.1 Event Selector 148
+16.2.2 Event Notification 148
+16.2.3 Event Exposure End Data 148
+16.2.4 Event Error Data 149
+16.2.5 Event Serial Port Receive Data 149
+16.2.6 Event Test Data 149
+16.3 Event Exposure End Data 150
+16.3.1 Summary Table 150
+16.3.2 Event Exposure End Data Features 150
+16.3.2.1 Event Exposure End 150
+16.3.2.2 Event Exposure End Timestamp 150
+16.3.2.3 Event Exposure End Frame ID 151
+16.4 Event Error Data 151
+16.4.1 Summary Table 151
+16.4.2 Event Error Data Features 151
+16.4.2.1 Event Error 151
+16.4.2.2 Event Error Timestamp 152
+16.4.2.3 Event Error Frame ID 152
+16.4.2.4 Event Error Code 152
+16.5 Event Serial Port Receive Data 153
+16.5.1 Summary Table 153
+16.5.2 Event Serial Port Receive Data Features 153
+16.5.2.1 Event Serial Port Receive 153
+16.5.2.2 Event Serial Port Receive Timestamp 154
+16.5.2.3 Event Serial Data 154
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 x
+16.5.2.4 Event Serial Data Length 154
+16.5.2.5 Event Serial Receive Overflow 155
+16.6 Event Test Data 155
+16.6.1 Summary Table 155
+16.6.2 Event Test Data Features 155
+16.6.2.1 Event Test 155
+16.6.2.2 Event Test Timestamp 156
+17 Counter And Timer Control 157
+17.1 Summary Table 158
+17.2 Counter And Timer Control Features 159
+17.2.1 Counter Selector 159
+17.2.2 Counter Event Source 160
+17.2.3 Counter Event Activation 161
+17.2.4 Counter Duration 161
+17.2.5 Counter Value 161
+17.2.6 Counter Value At Reset 162
+17.2.7 Counter Trigger Source 162
+17.2.8 Counter Trigger Activation 163
+17.2.9 Counter Reset Source 164
+17.2.10 Counter Reset Activation 165
+17.2.11 Counter Status 165
+17.2.12 Counter Delay 166
+18 Test Control 167
+18.1 Summary Table 167
+18.2 Test Control Features 167
+18.2.1 Test Pending Ack 167
+18.2.2 Test Event Generate 168
+18.2.3 Test 0001 168
+19 Logic Block Control 169
+19.1 Summary Table 170
+19.2 Logic Block Control Features 170
+19.2.1 Logic Block Selector 171
+19.2.2 Logic Block LUT Selector 171
+19.2.3 Logic Block LUT Input Selector 171
+19.2.4 Logic Block LUT Input Source 172
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 xi
+19.2.5 Logic Block LUT Input Activation 173
+19.2.6 Logic Block LUT Output Value All 173
+19.2.7 Logic Block LUT Row Index 174
+19.2.8 Logic Block LUT Output Value 174
+20 Digital IO Control 175
+20.1 Summary Table 176
+20.2 Digital IO Control Features 178
+20.2.1 Line Selector 178
+20.2.2 Line Mode 178
+20.2.3 3.3V Enable 179
+20.2.4 Line Inverter 179
+20.2.5 Line Status 179
+20.2.6 Line Status All 180
+20.2.7 Input filter Selector 180
+20.2.8 Line Filter Width 181
+20.2.9 Line Source 181
+20.2.10 Line Format 182
+20.2.11 Exposure Active Mode 182
+20.2.12 User Output Selector 183
+20.2.13 User Output Value 183
+20.2.14 User Output Value All 183
+21 Serial Port Control 185
+21.1 Serial Port 185
+21.2 Summary Table 185
+21.3 Serial Port Control Features 186
+21.3.1 Serial Port Selector 186
+21.3.2 Serial Port Source 187
+21.3.3 Serial Port Baud Rate 187
+21.3.4 Serial Port Data Bits 188
+21.3.5 Serial Port Stop Bits 188
+21.3.6 Serial Port Parity 189
+21.3.7 Transmit Queue Max Character Count 189
+21.3.8 Transmit Queue Current Character Count 190
+21.3.9 Receive Queue Max Character Count 190
+21.3.10 Receive Queue Current Character Count 190
+7/6/2018
+©2015-2016 FLIR
+Integrated Imaging
+Solutions Inc.
+All rights reserved.
+FLIR Blackfly®S Technical Reference for BFS-U3-51S5 xii
+21.3.11 Receive Queue Clear 191
+21.3.12 Receive Framing Error Count 191
+21.3.13 Receive Parity Error Count 191
+21 File Access 193
+21.1 File Access 193
+21.2 Summary Table 193
+21.3 File Access Features 194
+21.3.1 File Selector 194
+21.3.2 File Operation Selector 194
+21.3.3 File Operation Execute 195
+21.3.4 File Open Mode 195
+21.3.5 File Access Buffer 196
+21.3.6 File Access Offset 196
+21.3.7 File Access Length 196
+21.3.8 File Operation Status 197
+21.3.9 File Operation Result 197
+21.3.10 File Size 197
+22 Transfer Control 199
+22.1 Summary Table 200
+22.2 Transfer Control Features 201
+22.2.1 Transfer Control Mode 201
+22.2.2 Transfer Operation Mode 201
+22.2.3 Transfer Block Count 202
+22.2.4 Transfer Queue Max Block Count 202
+22.2.5 Transfer Queue Current Block Count 202
+22.2.6 Transfer Queue Overflow Count 203
+22.2.7 Transfer Queue Mode 203
+22.2.8 Transfer Start 203
+22.2.9 Transfer Stop 204
+Contacting Us 205
